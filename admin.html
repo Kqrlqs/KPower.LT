@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Puslapis</title>
+    <title>Admin Valdymas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-    <div class="container">
-        <!-- Kairė pusė su rezervacijų lentele -->
-        <div id="reservationsList"></div>
+    <div class="container-admin">
+        <div id="reservationsListContainer">
+            <h2>Rezervacijos</h2>
+            <table id="reservationsTable">
+                <thead>
+                    <tr>
+                        <th>Vardas</th>
+                        <th>Telefono numeris</th>
+                        <th>El. paštas</th>
+                        <th>Data</th>
+                        <th>Laikas</th>
+                        <th>Paslauga</th>
+                        <th>Žinutė</th>
+                        <th>Būsena</th>
+                        <th>Veiksmai</th>
+                    </tr>
+                </thead>
+                <tbody id="reservationsBody">
+                    <!-- Rezervacijos bus čia -->
+                </tbody>
+            </table>
+        </div>
 
-        <!-- Dešinė pusė su prisijungimo forma -->
-        <div id="loginFormContainer">
-            <h1>Admin Prisijungimas</h1>
-            <form id="loginForm">
-                <input type="text" id="username" placeholder="Vartotojo vardas" required>
-                <input type="password" id="password" placeholder="Slaptažodis" required>
-                <button type="submit">Prisijungti</button>
-                <p id="errorMessage">Neteisingas vartotojo vardas arba slaptažodis</p>
-            </form>
+        <div id="galleryContainer">
+            <h2>Galerija</h2>
+            <input type="file" id="imageInput">
+            <div id="gallery"></div>
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="admin.js"></script>
 </body>
 </html>
