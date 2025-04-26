@@ -8,19 +8,21 @@
 </head>
 <body>
 
-    <h1>Visos Rezervacijos</h1>
+    <div class="container">
+        <!-- Kairė pusė su rezervacijų lentele -->
+        <div id="reservationsList"></div>
 
-    <div id="reservationsList"></div>
-
-    <h2>Nuotraukų Galerija</h2>
-    <form id="imageUploadForm">
-        <input type="file" id="imageFile" name="image" accept="image/*">
-        <button type="submit">Įkelti nuotrauką</button>
-    </form>
-
-    <div id="gallery"></div>
-
-    <button id="logoutBtn">Atsijungti</button>
+        <!-- Dešinė pusė su prisijungimo forma -->
+        <div id="loginFormContainer">
+            <h1>Admin Prisijungimas</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Vartotojo vardas" required>
+                <input type="password" id="password" placeholder="Slaptažodis" required>
+                <button type="submit">Prisijungti</button>
+                <p id="errorMessage">Neteisingas vartotojo vardas arba slaptažodis</p>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
