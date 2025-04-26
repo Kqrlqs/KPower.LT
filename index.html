@@ -4,47 +4,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Auto Diagnostika</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Automobilio Diagnostikos Rezervacija</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Automobilio Diagnostika</h1>
-        <p>Rezervuok laiką profesionaliai diagnostikai</p>
-    </header>
+    <h1>Automobilio Diagnostikos Rezervacija</h1>
 
-    <main>
-        <form id="reservation-form" name="submit-to-google-sheet">
-            <label for="name">Vardas:</label>
-            <input type="text" id="name" name="name" required>
+    <form method="POST" action="reservation.php" id="diagnosticsForm">
+        <label for="carModel">Automobilio modelis:</label>
+        <input type="text" id="carModel" name="carModel" required><br><br>
 
-            <label for="phone">Telefono numeris:</label>
-            <input type="tel" id="phone" name="phone" required>
+        <label for="customerName">Vardas:</label>
+        <input type="text" id="customerName" name="customerName" required><br><br>
 
-            <label for="email">El. paštas:</label>
-            <input type="email" id="email" name="email">
+        <label for="phone">Telefonas:</label>
+        <input type="tel" id="phone" name="phone" required><br><br>
 
-            <label for="date">Data:</label>
-            <input type="date" id="date" name="date" required>
+        <label for="diagnosticDate">Diagnostikos data:</label>
+        <input type="date" id="diagnosticDate" name="diagnosticDate" required><br><br>
 
-            <label for="time">Laikas:</label>
-            <input type="time" id="time" name="time" required>
+        <label for="diagnosticTime">Laikas:</label>
+        <input type="time" id="diagnosticTime" name="diagnosticTime" required><br><br>
 
-            <label for="service">Paslaugos tipas:</label>
-            <select id="service" name="service">
-                <option value="diagnostika">Diagnostika</option>
-                <option value="kompiuterine">Kompiuterinė patikra</option>
-                <option value="pries-pirkima">Patikra prieš pirkimą</option>
-            </select>
+        <label for="service">Paslauga:</label>
+        <select id="service" name="service" required>
+            <option value="engine">Variklio diagnostika</option>
+            <option value="brakes">Stabdžių patikra</option>
+            <option value="electric">Elektronikos patikra</option>
+            <option value="full">Pilna diagnostika</option>
+        </select><br><br>
 
-            <label for="message">Papildomas komentaras:</label>
-            <textarea id="message" name="message" rows="4"></textarea>
+        <label for="message">Papildomi komentarai:</label>
+        <textarea id="message" name="message"></textarea><br><br>
 
-            <button type="submit">Siųsti rezervaciją</button>
-        </form>
-        <p id="success-message" style="display:none;">Rezervacija išsiųsta!</p>
-    </main>
-
-    <script src="script.js"></script>
+        <button type="submit">Rezervuoti</button>
+    </form>
 </body>
 </html>
