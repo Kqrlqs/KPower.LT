@@ -8,9 +8,21 @@
 </head>
 <body>
 
-    <h1>Visos Rezervacijos</h1>
+    <div class="container">
+        <h1>Visos Rezervacijos</h1>
+        
+        <div id="reservationsList"></div>
 
-    <div id="reservationsList"></div>
+        <h2>Galerija</h2>
+        <div id="gallery" class="gallery"></div>
+
+        <form id="imageUploadForm">
+            <input type="file" id="imageFile" accept="image/*" />
+            <button type="submit">Įkelti nuotrauką</button>
+        </form>
+
+        <button id="logoutBtn" onclick="logout()">Atsijungti</button>
+    </div>
 
     <script src="admin.js"></script>
 </body>
