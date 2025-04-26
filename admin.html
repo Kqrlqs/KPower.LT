@@ -1,29 +1,121 @@
-<!DOCTYPE html>
-<html lang="lt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Puslapis</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+document.addEventListener('DOMContentLoaded', function() {
+    const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-    <div class="container">
-        <h1>Visos Rezervacijos</h1>
+    if (isLoggedIn !== 'true') {
+        alert('Jūs neprisijungęs!');
+        window.location.href = 'index.html';  // Jei neprisijungęs, grąžina į pagrindinį puslapį
+        return;
+    }
+
+    // Paimame rezervacijas iš localStorage
+    const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
+    const reservationsList = document.getElementById('reservationsList');
+
+    // Jei nėra rezervacijų
+    if (reservations.length === 0) {
+        reservationsList.innerHTML = '<p>Nėra jokių rezervacijų.</p>';
+    } else {
+        const table = document.createElement('table');
+        table.innerHTML = `
+            <tr>
+                <th>Automobilio Modelis</th>
+                <th>Vardas</th>
+                <th>Telefonas</th>
+                <th>Data</th>
+                <th>Laikas</th>
+                <th>Paslauga</th>
+                <th>Komentaras</th>
+            </tr>
+        `;
+
+        reservations.forEach(reservation => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${reservation.carModel}</td>
+                <td>${reservation.customerName}</td>
+                <td>${reservation.phone}</td>
+                <td>${reservation.diagnosticDate}</td>
+                <td>${reservation.diagnosticTime}</td>
+                <td>${reservation.service}</td>
+                <td>${reservation.message}</td>
+            `;
+            table.appendChild(row);
+        });
+
+        reservationsList.appendChild(table);
+    }
+
+    // Nuotraukų galerijos įkėlimas
+    loadGallery();
+
+    // Atsijungimo funkcija
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+});
+
+// Funkcija, kuri įkelia galeriją
+function loadGallery() {
+    const gallery = document.getElementById('gallery');
+    const images = JSON.parse(localStorage.getItem('galleryImages')) || [];
+
+    gallery.innerHTML = ''; // Išvalome galeriją
+
+    images.forEach((image, index) => {
+        const imgDiv = document.createElement('div');
+        imgDiv.classList.add('gallery-item');
+
+        const imgElement = document.createElement('img');
+        imgElement.src = image;
+        imgElement.alt = `Nuotrauka ${index + 1}`;
         
-        <div id="reservationsList"></div>
+        // Mygtukas nuotraukai ištrinti
+        const deleteBtn = document.createElement('button');
+        deleteBtn.textContent = 'Ištrinti';
+        deleteBtn.addEventListener('click', function() {
+            deleteImage(index);
+        });
 
-        <h2>Galerija</h2>
-        <div id="gallery" class="gallery"></div>
+        imgDiv.appendChild(imgElement);
+        imgDiv.appendChild(deleteBtn);
+        gallery.appendChild(imgDiv);
+    });
+}
 
-        <form id="imageUploadForm">
-            <input type="file" id="imageFile" accept="image/*" />
-            <button type="submit">Įkelti nuotrauką</button>
-        </form>
+// Nuotraukos įkėlimas
+document.getElementById('imageUploadForm').addEventListener('submit', function(e) {
+    e.preventDefault();
 
-        <button id="logoutBtn" onclick="logout()">Atsijungti</button>
-    </div>
+    const imageFile = document.getElementById('imageFile').files[0];
+    if (!imageFile) {
+        alert('Prašome pasirinkti nuotrauką!');
+        return;
+    }
 
-    <script src="admin.js"></script>
-</body>
-</html>
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        const imageUrl = event.target.result;
+
+        // Išsaugome nuotrauką į localStorage
+        let images = JSON.parse(localStorage.getItem('galleryImages')) || [];
+        images.push(imageUrl);
+        localStorage.setItem('galleryImages', JSON.stringify(images));
+
+        loadGallery(); // Iš naujo įkeliame galeriją
+    };
+
+    reader.readAsDataURL(imageFile); // Konvertuojame į nuotraukos URL
+});
+
+// Nuotraukos ištrynimas
+function deleteImage(index) {
+    let images = JSON.parse(localStorage.getItem('galleryImages')) || [];
+    images.splice(index, 1); // Pašaliname nuotrauką pagal indeksą
+    localStorage.setItem('galleryImages', JSON.stringify(images));
+
+    loadGallery(); // Iš naujo įkeliame galeriją
+}
+
+// Atsijungimo funkcija
+function logout() {
+    localStorage.removeItem('isLoggedIn'); // Pašaliname prisijungimo informaciją
+    window.location.href = 'index.html'; // Nukreipiame į pagrindinį puslapį
+}
