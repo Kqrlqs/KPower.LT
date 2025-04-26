@@ -1,27 +1,23 @@
-<!DOCTYPE html>
-<html lang="lt">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Prisijungimas</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Admin Prisijungimas</h1>
+// Laukiam, kol puslapis pilnai užsikraus
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const loginForm = document.getElementById('loginForm');
 
-    <form id="loginForm">
-        <label for="username">Vartotojo vardas:</label>
-        <input type="text" id="username" required><br><br>
+    loginForm.addEventListener('submit', function(e) {
+        e.preventDefault(); // Sustabdom formos standartinį siuntimą
 
-        <label for="password">Slaptažodis:</label>
-        <input type="password" id="password" required><br><br>
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
 
-        <button type="submit">Prisijungti</button>
-    </form>
+        // Patikriname vartotoją ir slaptažodį
+        if (username === 'Karlas' && password === 'Bmwe70') {
+            // Jei prisijungimas sėkmingas, nustatome "prisijungimo" žymę į localStorage
+            localStorage.setItem('isLoggedIn', 'true');
+            // Ir peradresuojame į admin puslapį
+            window.location.href = 'admin.html';
+        } else {
+            alert('Neteisingas vartotojo vardas arba slaptažodis!');
+        }
+    });
 
-    <script src="login.js"></script>
-</body>
-</html>
-
-
-
+});
