@@ -1,66 +1,68 @@
-const reservations = [];
-
 document.addEventListener('DOMContentLoaded', () => {
-    loadReservations();
-    setupGallery();
-});
+    const reservationsList = document.getElementById('reservationsList');
 
-function loadReservations() {
-    const tableBody = document.getElementById('reservationsBody');
-    tableBody.innerHTML = '';
+    function loadReservations() {
+        const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
 
-    reservations.forEach((res, index) => {
-        const row = document.createElement('tr');
+        reservationsList.innerHTML = '';
 
-        row.innerHTML = `
-            <td>${res.name}</td>
-            <td>${res.phone}</td>
-            <td>${res.email}</td>
-            <td>${res.date}</td>
-            <td>${res.time}</td>
-            <td>${res.service}</td>
-            <td>${res.message}</td>
-            <td><select onchange="changeStatus(${index}, this.value)">
-                <option value="Laukiama" ${res.status === 'Laukiama' ? 'selected' : ''}>Laukiama</option>
-                <option value="Priimta" ${res.status === 'Priimta' ? 'selected' : ''}>Priimta</option>
-                <option value="Baigta" ${res.status === 'Baigta' ? 'selected' : ''}>Baigta</option>
-            </select></td>
-            <td><button onclick="deleteReservation(${index})">Ištrinti</button></td>
-        `;
-
-        tableBody.appendChild(row);
-    });
-}
-
-function changeStatus(index, newStatus) {
-    reservations[index].status = newStatus;
-    loadReservations();
-}
-
-function deleteReservation(index) {
-    reservations.splice(index, 1);
-    loadReservations();
-}
-
-// Galerijos funkcijos
-function setupGallery() {
-    const imageInput = document.getElementById('imageInput');
-    const gallery = document.getElementById('gallery');
-
-    imageInput.addEventListener('change', (e) => {
-        const file = e.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                const img = document.createElement('img');
-                img.src = event.target.result;
-                img.classList.add('gallery-image');
-                img.addEventListener('click', () => {
-                    gallery.removeChild(img);
-                });
-                gallery.appendChild(img);
-            };
-            reader.readAsDataURL(file);
+        if (reservations.length === 0) {
+            reservationsList.innerHTML = '<p>Šiuo metu nėra jokių rezervacijų.</p>';
+            return;
         }
-    });
-}
+
+        const table = document.createElement('table');
+        table.classList.add('reservation-table');
+
+        const headerRow = document.createElement('tr');
+        headerRow.innerHTML = `
+            <th>Vardas</th>
+            <th>Telefonas</th>
+            <th>El. Paštas</th>
+            <th>Data</th>
+            <th>Laikas</th>
+            <th>Paslauga</th>
+            <th>Žinutė</th>
+            <th>Statusas</th>
+            <th>Veiksmai</th>
+        `;
+        table.appendChild(headerRow);
+
+        reservations.forEach((reservation, index) => {
+            const row = document.createElement('tr');
+
+            row.innerHTML = `
+                <td>${reservation.name}</td>
+                <td>${reservation.phone}</td>
+                <td>${reservation.email}</td>
+                <td>${reservation.date}</td>
+                <td>${reservation.time}</td>
+                <td>${reservation.service}</td>
+                <td>${reservation.message || ''}</td>
+                <td><span class="status ${reservation.status.toLowerCase()}">${reservation.status}</span></td>
+                <td>
+                    <select data-index="${index}" class="statusSelect">
+                        <option value="Laukiama" ${reservation.status === 'Laukiama' ? 'selected' : ''}>Laukiama</option>
+                        <option value="Priimta" ${reservation.status === 'Priimta' ? 'selected' : ''}>Priimta</option>
+                        <option value="Baigta" ${reservation.status === 'Baigta' ? 'selected' : ''}>Baigta</option>
+                    </select>
+                </td>
+            `;
+            table.appendChild(row);
+        });
+
+        reservationsList.appendChild(table);
+
+        // Statuso keitimo funkcija
+        document.querySelectorAll('.statusSelect').forEach(select => {
+            select.addEventListener('change', function() {
+                const index = this.getAttribute('data-index');
+                reservations[index].status = this.value;
+                localStorage.setItem('reservations', JSON.stringify(reservations));
+                loadReservations(); // perkraunam kad atnaujinti spalvas
+            });
+        });
+    }
+
+    loadReservations();
+});
