@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Diagnostika</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Automobilio Diagnostika</h1>
+        <p>Rezervuok laiką profesionaliai diagnostikai</p>
+    </header>
+
+    <main>
+        <form id="reservation-form" name="submit-to-google-sheet">
+            <label for="name">Vardas:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="phone">Telefono numeris:</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="email">El. paštas:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="date">Data:</label>
+            <input type="date" id="date" name="date" required>
+
+            <label for="time">Laikas:</label>
+            <input type="time" id="time" name="time" required>
+
+            <label for="service">Paslaugos tipas:</label>
+            <select id="service" name="service">
+                <option value="diagnostika">Diagnostika</option>
+                <option value="kompiuterine">Kompiuterinė patikra</option>
+                <option value="pries-pirkima">Patikra prieš pirkimą</option>
+            </select>
+
+            <label for="message">Papildomas komentaras:</label>
+            <textarea id="message" name="message" rows="4"></textarea>
+
+            <button type="submit">Siųsti rezervaciją</button>
+        </form>
+        <p id="success-message" style="display:none;">Rezervacija išsiųsta!</p>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
