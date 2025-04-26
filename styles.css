@@ -102,3 +102,19 @@ select option[value="Baigta"] {
     border-radius: 5px;
     cursor: pointer;
 }
+
+.status {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+}
+.status.laukiama {
+    background-color: orange;
+}
+.status.priimta {
+    background-color: green;
+}
+.status.baigta {
+    background-color: blue;
+}
