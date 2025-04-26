@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', function() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-    // Jei vartotojas neprisijungęs, perkeliam jį į pagrindinį puslapį
     if (isLoggedIn !== 'true') {
         alert('Jūs neprisijungęs!');
-        window.location.href = 'index.html';  // Grąžina į pagrindinį puslapį
+        window.location.href = 'index.html';  // Jei neprisijungęs, grąžina į pagrindinį puslapį
         return;
     }
 
-    // Paimame rezervacijas iš localStorage
     const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
     const reservationsList = document.getElementById('reservationsList');
 
-    // Jei nėra rezervacijų
     if (reservations.length === 0) {
         reservationsList.innerHTML = '<p>Nėra jokių rezervacijų.</p>';
     } else {
@@ -29,7 +26,6 @@ document.addEventListener('DOMContentLoaded', function() {
             </tr>
         `;
 
-        // Pridedame eilutes su rezervacijomis
         reservations.forEach(reservation => {
             const row = document.createElement('tr');
             row.innerHTML = `
