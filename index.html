@@ -3,50 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automobilio Diagnostikos Rezervacija</title>
+    <title>Automobilio Diagnostika</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Automobilio Diagnostikos Rezervacija</h1>
+
+    <h1>Automobilio Diagnostikos Registracija</h1>
 
     <form id="reservationForm">
-        <label for="carModel">Automobilio modelis:</label>
-        <input type="text" id="carModel" required><br><br>
-
-        <label for="customerName">Vardas:</label>
-        <input type="text" id="customerName" required><br><br>
-
-        <label for="phone">Telefonas:</label>
-        <input type="tel" id="phone" required><br><br>
-
-        <label for="diagnosticDate">Diagnostikos data:</label>
+        <input type="text" id="carModel" placeholder="Automobilio modelis" required><br><br>
+        <input type="text" id="customerName" placeholder="Vardas" required><br><br>
+        <input type="tel" id="phone" placeholder="Telefono numeris" required><br><br>
         <input type="date" id="diagnosticDate" required><br><br>
-
-        <label for="diagnosticTime">Laikas:</label>
         <input type="time" id="diagnosticTime" required><br><br>
-
-        <label for="service">Paslauga:</label>
-        <select id="service" required>
-            <option value="engine">Variklio diagnostika</option>
-            <option value="brakes">Stabdžių patikra</option>
-            <option value="electric">Elektronikos patikra</option>
-            <option value="full">Pilna diagnostika</option>
-        </select><br><br>
-
-        <label for="message">Papildomi komentarai:</label>
-        <textarea id="message"></textarea><br><br>
-
-        <button type="submit">Rezervuoti</button>
+        <input type="text" id="service" placeholder="Paslauga" required><br><br>
+        <textarea id="message" placeholder="Papildoma informacija"></textarea><br><br>
+        <button type="submit">Pateikti rezervaciją</button>
     </form>
 
     <br>
-    <div style="text-align: center;">
-        <a href="login.html" class="admin-login-button">Prisijungti kaip administratorius</a>
-    </div>
+    <a href="login.html"><button>Prisijungti kaip administratorius</button></a>
 
     <script src="script.js"></script>
 </body>
 </html>
-
-
-
