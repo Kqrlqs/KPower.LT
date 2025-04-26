@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Automobilio Diagnostika</title>
+    <title>Prisijungimas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-
-    <h1>Automobilio Diagnostikos Registracija</h1>
-
-    <form id="reservationForm">
-        <input type="text" id="carModel" placeholder="Automobilio modelis" required><br><br>
-        <input type="text" id="customerName" placeholder="Vardas" required><br><br>
-        <input type="tel" id="phone" placeholder="Telefono numeris" required><br><br>
-        <input type="date" id="diagnosticDate" required><br><br>
-        <input type="time" id="diagnosticTime" required><br><br>
-        <input type="text" id="service" placeholder="Paslauga" required><br><br>
-        <textarea id="message" placeholder="Papildoma informacija"></textarea><br><br>
-        <button type="submit">Pateikti rezervaciją</button>
-    </form>
-
-    <br>
-    <a href="login.html"><button>Prisijungti kaip administratorius</button></a>
+    <div class="container">
+        <!-- Dešinė pusė su prisijungimo forma -->
+        <div id="loginFormContainer">
+            <h1>Admin Prisijungimas</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Vartotojo vardas" required>
+                <input type="password" id="password" placeholder="Slaptažodis" required>
+                <button type="submit">Prisijungti</button>
+                <p id="errorMessage">Neteisingas vartotojo vardas arba slaptažodis</p>
+            </form>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
