@@ -1,20 +1,17 @@
-// Laukiam, kol visas admin puslapis bus pilnai užkrautas
 document.addEventListener('DOMContentLoaded', function() {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
-    // Tikrinam ar vartotojas yra prisijungęs
     if (isLoggedIn !== 'true') {
         alert('Jūs neprisijungęs!');
-        window.location.href = 'index.html'; // Grąžina į pagrindinį puslapį
+        window.location.href = 'index.html';
         return;
     }
 
-    // Jei prisijungęs - rodom rezervacijas
     const reservations = JSON.parse(localStorage.getItem('reservations')) || [];
     const reservationsList = document.getElementById('reservationsList');
 
     if (reservations.length === 0) {
-        reservationsList.innerHTML = '<p>Šiuo metu nėra jokių rezervacijų.</p>';
+        reservationsList.innerHTML = '<p>Nėra jokių rezervacijų.</p>';
     } else {
         const table = document.createElement('table');
         table.innerHTML = `
@@ -46,6 +43,3 @@ document.addEventListener('DOMContentLoaded', function() {
         reservationsList.appendChild(table);
     }
 });
-
-
-
