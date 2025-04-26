@@ -1,6 +1,6 @@
-document.getElementById('reservationForm').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
+document.getElementById('reservationForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+
     const reservation = {
         carModel: document.getElementById('carModel').value,
         customerName: document.getElementById('customerName').value,
@@ -15,7 +15,6 @@ document.getElementById('reservationForm').addEventListener('submit', function(e
     reservations.push(reservation);
     localStorage.setItem('reservations', JSON.stringify(reservations));
 
-    alert('Rezervacija įrašyta!');
-    document.getElementById('reservationForm').reset();
+    alert('Rezervacija sėkmingai pateikta!');
+    this.reset();
 });
-
