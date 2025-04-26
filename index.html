@@ -1,0 +1,47 @@
+# HTML failas - Pagrindinis puslapis (index.html)
+index_html_content = """
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automobilio Diagnostikos Rezervacija</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Automobilio Diagnostikos Rezervacija</h1>
+
+    <form id="reservationForm">
+        <label for="carModel">Automobilio modelis:</label>
+        <input type="text" id="carModel" required><br><br>
+
+        <label for="customerName">Vardas:</label>
+        <input type="text" id="customerName" required><br><br>
+
+        <label for="phone">Telefonas:</label>
+        <input type="tel" id="phone" required><br><br>
+
+        <label for="diagnosticDate">Diagnostikos data:</label>
+        <input type="date" id="diagnosticDate" required><br><br>
+
+        <label for="diagnosticTime">Laikas:</label>
+        <input type="time" id="diagnosticTime" required><br><br>
+
+        <label for="service">Paslauga:</label>
+        <select id="service" required>
+            <option value="engine">Variklio diagnostika</option>
+            <option value="brakes">Stabdžių patikra</option>
+            <option value="electric">Elektronikos patikra</option>
+            <option value="full">Pilna diagnostika</option>
+        </select><br><br>
+
+        <label for="message">Papildomi komentarai:</label>
+        <textarea id="message"></textarea><br><br>
+
+        <button type="submit">Rezervuoti</button>
+    </form>
+
+    <script src="script.js"></script>
+</body>
+</html>
+"""
