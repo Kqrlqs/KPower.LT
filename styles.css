@@ -1,0 +1,113 @@
+/* Bendri stiliai */
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://www.bmw.com/content/dam/bmw/common/all-models/4-series/gran-coupe/2020/BMW-4-series-gran-coupe-2020-16x9.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+#logo img {
+    height: 50px;
+}
+
+#contact-info p {
+    margin: 0;
+}
+
+/* Pagrindinis turinys */
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    width: 80%;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #ffcc00;
+}
+
+/* Rezervacijos formos stiliai */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input, select, button {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+}
+
+button {
+    cursor: pointer;
+    background-color: #ffcc00;
+}
+
+/* Rezervacijos lentelė */
+#reservationsTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#reservationsTable th, #reservationsTable td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+#reservationsTable th {
+    background-color: #333;
+}
+
+#reservationsTable td {
+    background-color: #444;
+}
+
+#reservationsTable td button {
+    background-color: red;
+    color: white;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Statuso spalvos */
+.status-pending {
+    background-color: #FFEB3B; /* Geltona */
+}
+
+.status-accepted {
+    background-color: #4CAF50; /* Žalia */
+}
+
+.status-completed {
+    background-color: #2196F3; /* Mėlyna */
+}
+
+/* Pagrindinis pėdsakas */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+}
