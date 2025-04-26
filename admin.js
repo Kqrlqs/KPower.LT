@@ -119,3 +119,4 @@ function logout() {
     localStorage.removeItem('isLoggedIn'); // Pašaliname prisijungimo informaciją
     window.location.href = 'index.html'; // Nukreipiame į pagrindinį puslapį
 }
+
