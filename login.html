@@ -3,19 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administratoriaus Prisijungimas</title>
+    <title>Prisijungimas</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <div class="container">
+        <!-- Dešinė pusė su prisijungimo forma -->
+        <div id="loginFormContainer">
+            <h1>Admin Prisijungimas</h1>
+            <form id="loginForm">
+                <input type="text" id="username" placeholder="Vartotojo vardas" required>
+                <input type="password" id="password" placeholder="Slaptažodis" required>
+                <button type="submit">Prisijungti</button>
+                <p id="errorMessage">Neteisingas vartotojo vardas arba slaptažodis</p>
+            </form>
+        </div>
+    </div>
 
-    <h1>Admin Prisijungimas</h1>
-
-    <form id="loginForm">
-        <input type="text" id="username" placeholder="Vartotojo vardas" required><br><br>
-        <input type="password" id="password" placeholder="Slaptažodis" required><br><br>
-        <button type="submit">Prisijungti</button>
-    </form>
-
-    <script src="login.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
