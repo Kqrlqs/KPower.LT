@@ -1,10 +1,3 @@
-// Šis failas gali būti naudojamas rezervacijų formoms ir bendriems puslapio veiksmams ateityje.
-
-// Kol kas įdėsime paprastą žinutę, kad failas veikia.
-console.log("Script.js sėkmingai užkrautas!");
-
-// Jei norėtum pridėti rezervacijų formos funkcionalumą, galėtume daryti pavyzdžiui taip:
-
 document.addEventListener('DOMContentLoaded', () => {
     const reservationForm = document.getElementById('reservationForm');
 
@@ -35,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
             reservations.push(newReservation);
             localStorage.setItem('reservations', JSON.stringify(reservations));
 
-            alert('Rezervacija sėkmingai pateikta!');
+            alert('Rezervacija pateikta sėkmingai!');
             reservationForm.reset();
         });
     }
