@@ -1,9 +1,6 @@
-# JavaScript failas (script.js) - pagrindinis puslapis
-script_js_content = """
 document.getElementById('reservationForm').addEventListener('submit', function(event) {
     event.preventDefault();
     
-    // Formos duomenys
     const reservation = {
         carModel: document.getElementById('carModel').value,
         customerName: document.getElementById('customerName').value,
@@ -14,7 +11,6 @@ document.getElementById('reservationForm').addEventListener('submit', function(e
         message: document.getElementById('message').value
     };
 
-    // Saugo registraciją į LocalStorage
     let reservations = JSON.parse(localStorage.getItem('reservations')) || [];
     reservations.push(reservation);
     localStorage.setItem('reservations', JSON.stringify(reservations));
@@ -22,4 +18,4 @@ document.getElementById('reservationForm').addEventListener('submit', function(e
     alert('Rezervacija įrašyta!');
     document.getElementById('reservationForm').reset();
 });
-"""
+
