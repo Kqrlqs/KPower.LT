@@ -8,23 +8,20 @@
 </head>
 <body>
 
-    <div class="container">
-        <h1>Visos Rezervacijos</h1>
-        
-        <div id="reservationsList"></div>
+    <h1>Visos Rezervacijos</h1>
 
-        <h2>Nuotraukų Galerija</h2>
-        <div id="gallery" class="gallery"></div>
+    <div id="reservationsList"></div>
 
-        <form id="imageUploadForm">
-            <input type="file" id="imageFile" accept="image/*" />
-            <button type="submit">Įkelti nuotrauką</button>
-        </form>
+    <h2>Nuotraukų Galerija</h2>
+    <form id="imageUploadForm">
+        <input type="file" id="imageFile" name="image" accept="image/*">
+        <button type="submit">Įkelti nuotrauką</button>
+    </form>
 
-        <button id="logoutBtn" onclick="logout()">Atsijungti</button>
-    </div>
+    <div id="gallery"></div>
 
-    <script src="admin.js"></script>
+    <button id="logoutBtn">Atsijungti</button>
+
+    <script src="script.js"></script>
 </body>
 </html>
- 
