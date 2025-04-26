@@ -1,5 +1,3 @@
-# CSS failas (styles.css)
-css_content = """
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f9;
@@ -49,4 +47,4 @@ button {
 button:hover {
     background-color: #0056b3;
 }
-"""
+
