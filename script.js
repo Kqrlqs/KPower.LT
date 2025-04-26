@@ -1,8 +1,3 @@
-// Prisijungimo informacija
-const adminUsername = 'Karlas'; // Vartotojo vardas
-const adminPassword = 'Bmwe70'; // Slaptažodis
-
-// Tikriname, ar administratorius yra prisijungęs
 document.addEventListener('DOMContentLoaded', function () {
     const isLoggedIn = localStorage.getItem('isLoggedIn');
 
@@ -58,9 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
 
         reservationsList.appendChild(table);
     }
-
-    // Nuotraukų galerijos įkėlimas
-    loadGallery();
 
     // Atsijungimo mygtukas
     document.getElementById('logoutBtn').addEventListener('click', logout);
@@ -139,68 +131,6 @@ function displayReservations() {
 
         reservationsList.appendChild(table);
     }
-}
-
-// Nuotraukų galerijos įkėlimas
-function loadGallery() {
-    const gallery = document.getElementById('gallery');
-    const images = JSON.parse(localStorage.getItem('galleryImages')) || [];
-
-    gallery.innerHTML = ''; // Išvalome galeriją
-
-    images.forEach((image, index) => {
-        const imgDiv = document.createElement('div');
-        imgDiv.classList.add('gallery-item');
-
-        const imgElement = document.createElement('img');
-        imgElement.src = image;
-        imgElement.alt = `Nuotrauka ${index + 1}`;
-        
-        // Mygtukas nuotraukai ištrinti
-        const deleteBtn = document.createElement('button');
-        deleteBtn.textContent = 'Ištrinti';
-        deleteBtn.addEventListener('click', function() {
-            deleteImage(index);
-        });
-
-        imgDiv.appendChild(imgElement);
-        imgDiv.appendChild(deleteBtn);
-        gallery.appendChild(imgDiv);
-    });
-}
-
-// Nuotraukos įkėlimas
-document.getElementById('imageUploadForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const imageFile = document.getElementById('imageFile').files[0];
-    if (!imageFile) {
-        alert('Prašome pasirinkti nuotrauką!');
-        return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function(event) {
-        const imageUrl = event.target.result;
-
-        // Išsaugome nuotrauką į localStorage
-        let images = JSON.parse(localStorage.getItem('galleryImages')) || [];
-        images.push(imageUrl);
-        localStorage.setItem('galleryImages', JSON.stringify(images));
-
-        loadGallery(); // Iš naujo įkeliame galeriją
-    };
-
-    reader.readAsDataURL(imageFile); // Konvertuojame į nuotraukos URL
-});
-
-// Nuotraukos ištrynimas
-function deleteImage(index) {
-    let images = JSON.parse(localStorage.getItem('galleryImages')) || [];
-    images.splice(index, 1); // Pašaliname nuotrauką pagal indeksą
-    localStorage.setItem('galleryImages', JSON.stringify(images));
-
-    loadGallery(); // Iš naujo įkeliame galeriją
 }
 
 // Atsijungimo funkcija
