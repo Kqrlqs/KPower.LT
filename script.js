@@ -37,7 +37,7 @@ document.getElementById("reservation").addEventListener("submit", function(e) {
     serviceType
   };
 
-  fetch("https://script.google.com/macros/s/YOUR_SCRIPT_ID_HERE/exec", {
+  fetch("https://script.google.com/macros/s/AKfycbzCTc8fSs5SHT6sImDEz3kI12lWI3JNjpPJn1_beWgLfcT7CVbeH2l-xQVGXBCSj2OX8g/exec", {
     method: "POST",
     body: JSON.stringify(data),
     headers: {
