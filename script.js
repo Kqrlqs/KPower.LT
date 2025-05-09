@@ -38,7 +38,7 @@ document.getElementById("reservation").addEventListener("submit", function(e) {
   };
 
   fetch("https://script.google.com/macros/s/AKfycbzCTc8fSs5SHT6sImDEz3kI12lWI3JNjpPJn1_beWgLfcT7CVbeH2l-xQVGXBCSj2OX8g/exec", {
-    method: "POST",
+    method: "Rezervacijos",
     body: JSON.stringify(data),
     headers: {
       "Content-Type": "application/json"
